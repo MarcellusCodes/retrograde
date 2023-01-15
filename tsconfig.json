@@ -9,7 +9,8 @@
       "@/components/*": ["components/*"],
       "@/pages/*": ["pages/*"],
       "@/lib/*": ["lib/*"],
-      "@/styles/*": ["styles/*"]
+      "@/styles/*": ["styles/*"],
+      "@/api/*": ["api/*"]
     },
     "strict": true,
     "forceConsistentCasingInFileNames": true,
