@@ -5,21 +5,9 @@ import Link from "next/link";
 import { NextPage } from "next";
 import { getProducts } from "@/api/queries";
 import { Puzzle, PackageCheck } from "lucide-react";
+import type { Product } from "@/types/index";
 
-interface Products {
-  products: {
-    id: string;
-    name: string;
-    slug: string;
-    price: number;
-    description: string;
-    image: string;
-    pieces: number;
-    status: "Sold Out" | "Available";
-  }[];
-}
-
-const Home: NextPage<Products> = ({ products }) => {
+const Home: NextPage<{ products: Product[] }> = ({ products }) => {
   return (
     <Layout>
       <div className=" grid grid-cols-4 gap-8">
