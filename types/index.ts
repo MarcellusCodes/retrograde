@@ -6,5 +6,6 @@ export type Product = {
   description: string;
   image: string;
   pieces: number;
+  url: string;
   status: "Sold Out" | "Available";
 };

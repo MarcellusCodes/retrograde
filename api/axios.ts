@@ -9,4 +9,6 @@ export const axios = Axios.create({
 
 export const apiClient = {
   get: (route: string) => axios.get(route),
+  patch: (route: string, data: Record<string, unknown>) =>
+    axios.patch(route, data),
 };
