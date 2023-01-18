@@ -11,7 +11,8 @@
       "@/lib/*": ["lib/*"],
       "@/styles/*": ["styles/*"],
       "@/api/*": ["api/*"],
-      "@/types/*": ["types/*"]
+      "@/types/*": ["types/*"],
+      "@/utils/*": ["utils/*"]
     },
     "strict": true,
     "forceConsistentCasingInFileNames": true,
