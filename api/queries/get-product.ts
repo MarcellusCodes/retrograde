@@ -1,10 +1,10 @@
 import { apiClient } from "@/api/axios";
 
-const getProducts = async (slug: string) => {
+const getProduct = async (slug: string) => {
   const { data } = await apiClient.get(
     `items/products?fields=id,name,slug,price,description,image,pieces,status&filter[slug][_eq]=${slug}`,
   );
   return data;
 };
 
-export default getProducts;
+export default getProduct;
