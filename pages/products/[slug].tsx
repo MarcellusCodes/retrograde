@@ -30,7 +30,14 @@ const Product: NextPage<{ product: Product }> = ({ product }) => {
               <PackageCheck color="black" size={16} /> {product.status}
             </li>
           </ul>
-          <button className="rounded-sm bg-slate-50 py-2 px-8">
+          <button
+            className="snipcart-add-item rounded-sm bg-slate-50 py-2 px-8"
+            data-item-id={product.id}
+            data-item-price={product.price}
+            data-item-description={product.description}
+            data-item-image={`https://pbmpnq0k.directus.app/assets/${product.image}`}
+            data-item-name={product.name}
+          >
             Add to cart
           </button>
         </article>
