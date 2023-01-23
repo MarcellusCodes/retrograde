@@ -8,7 +8,7 @@ import { Preview } from "@react-email/preview";
 import { Section } from "@react-email/section";
 import { Text } from "@react-email/text";
 
-export default function CompletedOrderTemplate() {
+export function CompletedOrderTemplate({ token }: { token: string }) {
   return (
     <Html>
       <Head />
@@ -16,7 +16,7 @@ export default function CompletedOrderTemplate() {
       <Section style={main}>
         <Container style={container}>
           <Section style={box}>
-            <Text style={header}>Renegade</Text>
+            <Text style={header}>Renegade Token: {token}</Text>
             <Hr style={hr} />
             <Text style={paragraph}>
               Thanks for ordering! Your products are being processed and soon on
