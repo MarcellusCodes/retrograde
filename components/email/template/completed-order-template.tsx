@@ -36,8 +36,8 @@ export default function CompletedOrderTemplate() {
             </Button>
             <Hr style={hr} />
             <Text style={paragraph}>
-              We'll be here to help you with any step along the way. You can
-              find answers to most questions and get in touch with us on our{" "}
+              We`&apos;`ll be here to help you with any step along the way. You
+              can find answers to most questions and get in touch with us on our{" "}
               <Link style={anchor} href="https://renegade.vercel.app">
                 support site
               </Link>
