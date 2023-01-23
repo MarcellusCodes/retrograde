@@ -14,7 +14,7 @@ export function comparePieces(scrapedPieces: number) {
   } else return 50;
 }
 
-export function sendMail() {
+export async function sendMail() {
   sendgrid.setApiKey(process.env.SENDGRID_API_KEY as string);
 
   const emailHtml = render(<CompletedOrderEmail />);
