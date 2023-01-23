@@ -1,8 +1,8 @@
 import React from "react";
-import { CompletedOrderTemplate } from "@/components/email/index";
+import { CompletedOrderTemplate } from "@/components/email/template/completed-order-template";
 
-const CompletedOrderEmail = () => {
-  return <CompletedOrderTemplate />;
+const CompletedOrderEmail = ({ token }: { token: string }) => {
+  return <CompletedOrderTemplate token={token} />;
 };
 
 export default CompletedOrderEmail;

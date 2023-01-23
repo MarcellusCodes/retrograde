@@ -33,8 +33,8 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<ResponseData>,
 ) {
-  const mail = await sendMail();
-
+  const { token } = req.body;
+  const mail = await sendMail(token);
   /*const { token, user, items, eventName } = req.body;
 
   const validateSnipcart = await getSnipcartValidation(token);
