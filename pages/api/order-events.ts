@@ -33,7 +33,9 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<ResponseData>,
 ) {
-  const { token, user, items, eventName } = req.body;
+  const mail = await sendMail();
+
+  /*const { token, user, items, eventName } = req.body;
 
   const validateSnipcart = await getSnipcartValidation(token);
 
@@ -62,9 +64,7 @@ export default async function handler(
     );
 
     await Promise.all([...revalidatePaths]);
-
-    const mail = sendMail();
-  }
+  }*/
 
   res.status(200).json({ response: "success" });
 }
