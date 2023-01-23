@@ -35,6 +35,7 @@ const Product: NextPage<{ product: Product }> = ({ product }) => {
             data-item-id={product.id}
             data-item-price={product.price}
             data-item-description={product.description}
+            data-item-url={`/products/${product.slug}`}
             data-item-image={`https://pbmpnq0k.directus.app/assets/${product.image}`}
             data-item-name={product.name}
           >
