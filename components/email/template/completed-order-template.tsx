@@ -8,7 +8,7 @@ import { Preview } from "@react-email/preview";
 import { Section } from "@react-email/section";
 import { Text } from "@react-email/text";
 
-export function CompletedOrderTemplate() {
+export function CompletedOrderTemplate({ input }: { input: string }) {
   return (
     <Html>
       <Head />
@@ -16,7 +16,7 @@ export function CompletedOrderTemplate() {
       <Section style={main}>
         <Container style={container}>
           <Section style={box}>
-            <Text style={header}>Retrograde</Text>
+            <Text style={header}>Retrograde {input}</Text>
             <Hr style={hr} />
             <Text style={paragraph}>
               Thanks for ordering! Your products are being processed and soon on

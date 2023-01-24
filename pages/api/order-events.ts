@@ -40,16 +40,17 @@ export default async function handler(
   if (validateSnipcart.status !== "healthy") {
     return res.status(401).json({ response: "not authorized" });
   } */
+  const mail = await sendMail(req.body.eventName);
+  //if (req.body.content.eventName === "order.completed") {
+  const productIds: string = req.body.content.items
+    .map((item: { id: string }) => item.id)
+    .join();
 
-  if (req.body.content.eventName === "order.completed") {
-    const productIds: string = req.body.content.items
-      .map((item: { id: string }) => item.id)
-      .join();
+  const products: { data: Product[] } = await getProductsById(productIds);
 
-    const products: { data: Product[] } = await getProductsById(productIds);
-
-    products.data.forEach(async (product: Product) => {
-      req.body.content.items.forEach(
+  await Promise.all(
+    products.data.map(async (product: Product) => {
+      req.body.content.items.map(
         async (item: { id: string; quantity: number }) => {
           if (item.id === product.id) {
             const pieces = product.pieces - item.quantity;
@@ -57,16 +58,16 @@ export default async function handler(
           }
         },
       );
-    });
+    }),
+  );
 
-    await Promise.all(
-      products.data.map(
-        async (product: Product) =>
-          await res.revalidate(`/products/${product.slug}`),
-      ),
-    );
-  }
-  const mail = await sendMail();
+  await Promise.all(
+    products.data.map(
+      async (product: Product) =>
+        await res.revalidate(`/products/${product.slug}`),
+    ),
+  );
+  //}
 
   res.status(200).json({ response: "success" });
 }
