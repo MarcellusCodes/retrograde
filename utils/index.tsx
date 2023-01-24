@@ -14,10 +14,10 @@ export function comparePieces(scrapedPieces: number) {
   } else return 50;
 }
 
-export async function sendMail(token: string) {
+export async function sendMail() {
   sendgrid.setApiKey(process.env.SENDGRID_API_KEY as string);
 
-  const emailHtml = render(<CompletedOrderEmail token={token} />);
+  const emailHtml = render(<CompletedOrderEmail />);
 
   const options = {
     from: "retrograde.ecommerce@gmail.com",
