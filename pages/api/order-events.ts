@@ -33,28 +33,30 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<ResponseData>,
 ) {
-  const { token, user, items, eventName } = req.body.content;
+  /* const { token, user, items, eventName } = req.body.content; */
 
-  const validateSnipcart = await getSnipcartValidation(token);
+  /* const validateSnipcart = await getSnipcartValidation(token);
 
   if (validateSnipcart.status !== "healthy") {
     return res.status(401).json({ response: "not authorized" });
-  }
+  } */
 
-  if (eventName === "order.completed") {
-    const productIds: string = items
+  if (req.body.content.eventName === "order.completed") {
+    const productIds: string = req.body.content.items
       .map((item: { id: string }) => item.id)
       .join();
 
     const products: { data: Product[] } = await getProductsById(productIds);
 
     products.data.forEach(async (product: Product) => {
-      items.forEach(async (item: { id: string; quantity: number }) => {
-        if (item.id === product.id) {
-          const pieces = product.pieces - item.quantity;
-          await updateProductPieces(product.id, pieces);
-        }
-      });
+      req.body.content.items.forEach(
+        async (item: { id: string; quantity: number }) => {
+          if (item.id === product.id) {
+            const pieces = product.pieces - item.quantity;
+            await updateProductPieces(product.id, pieces);
+          }
+        },
+      );
     });
 
     await Promise.all(
