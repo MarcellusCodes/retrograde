@@ -34,7 +34,7 @@ export default async function handler(
   res: NextApiResponse<ResponseData>,
 ) {
   const { token } = req.body;
-  const mail = await sendMail("Hello World");
+  const mail = await sendMail(req.body.email);
   /*const { token, user, items, eventName } = req.body;
 
   const validateSnipcart = await getSnipcartValidation(token);
