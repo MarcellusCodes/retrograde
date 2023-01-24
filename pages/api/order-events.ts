@@ -57,11 +57,12 @@ export default async function handler(
       });
     });
 
-    const revalidatePaths = products.data.map((product: Product) =>
-      res.revalidate(`/articles/${product.slug}`),
+    await Promise.all(
+      products.data.map(
+        async (product: Product) =>
+          await res.revalidate(`/products/${product.slug}`),
+      ),
     );
-
-    await Promise.all([...revalidatePaths]);
   }
   const mail = await sendMail();
 
